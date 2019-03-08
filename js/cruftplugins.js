@@ -125,7 +125,7 @@ jQuery(document).ready(function($) {
       '<thead>' +
         '<tr>' +
           '<td><input class="cruftplugin-select-all" type="checkbox" data-enpassusermodified="yes"></td>' +
-          '<td class="cruft-tool-selector"><b>Select all files</b></td>' +
+          '<td class="cruft-tool-selector cruft-plugin-td"><b>Select all files</b></td>' +
         '</tr>' +
       '</thead>' +
       '<tbody class="cruftplugins_entries">' +
@@ -133,11 +133,13 @@ jQuery(document).ready(function($) {
       '<tfoot class="cruftplugins_less-than" style="display: none;">' +
         '<tr>' +
           '<td><input class="cruftplugin-select-all" type="checkbox"></td>' +
-          '<td class="cruft-tool-selector"><b>Select all files</b></td>' +
+          '<td class="cruft-tool-selector cruft-plugin-td"><b>Select all files</b></td>' +
         '</tr>' +
       '</tfoot>' +
     '</table>' +
-    '<button class="cruftplugin-delete-button" data-status="' + status + '" type="button">Delete</button>';
+    '<button class="cruftplugin-delete-button" data-status="' + status + '" type="button">Delete</button>' +
+    '</br>' +
+    '<hr class="plugin-separation-line">';
     $element.append(html)
   }
 
