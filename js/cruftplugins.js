@@ -48,7 +48,6 @@ jQuery(document).ready(function ($) {
           appendTable($bodyElement, status)
           // Insert entries
           var $entries = $('#cruftplugins_' + status + ' .cruftplugins_entries_' + status);
-          console.log($entries)
           $.each(sortedData[status], function (o, plugin) {
             var html = '<tr class="cruftplugin">' +
               '<td class="cruftplugin-delete"><input data-plugin-name="' + plugin.name + '" class="cruftplugin-check_' + status + '" type="checkbox"></td>' +
