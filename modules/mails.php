@@ -31,7 +31,15 @@ if ( ! class_exists('Mails') ) {
     }
 
     public static function register_mails_page() {
-      add_submenu_page( 'tools.php', __('Mails', 'seravo'), __('Mails', 'seravo'), 'manage_options', 'mails_page', array( __CLASS__, 'load_mails_page' ), 'Seravo\seravo_postboxes_page' );
+      add_submenu_page(
+        'tools.php',
+        __('Mails', 'seravo'),
+        __('Mails', 'seravo'),
+        'manage_options',
+        'mails_page',
+        array( __CLASS__, 'load_mails_page' ),
+        'Seravo\seravo_postboxes_page'
+      );
     }
 
     public static function load_mails_page() {
