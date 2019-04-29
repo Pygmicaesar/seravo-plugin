@@ -12,6 +12,8 @@ if ( ! defined('ABSPATH') ) {
   die('Access denied!');
 }
 
+require_once dirname( __FILE__ ) . '/../lib/mails-page.php';
+
 if ( ! class_exists('Mails') ) {
 
   class Mails {
@@ -42,8 +44,6 @@ if ( ! class_exists('Mails') ) {
     }
 
     public static function seravo_mails_postbox() {
-      $forwards_table = new Seravo_Mails_Forward_Table();
-      $forwards_table->prepare_items();
       ?>
       <form action="#" method="get" style="width: 100%; margin-bottom: 10px;">
         <input type="hidden" name="page" value="<?php echo $_REQUEST['page']; ?>"/>
@@ -53,7 +53,7 @@ if ( ! class_exists('Mails') ) {
         <input type="hidden" name="page" value="<?php echo $_REQUEST['page']; ?>"/>
         <?php
         if ( ! empty ( $_GET['domain'] ) ) {
-          $forwards_table->display();
+          get_forwards_table();
         }
         ?>
       </form>
