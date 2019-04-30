@@ -261,25 +261,10 @@ class Seravo_Domains_List_Table extends WP_List_Table {
 
 }
 
-// Create an instance of our package class
-$domains_table = new Seravo_Domains_List_Table();
-// Fetch, prepare, sort, and filter our data...
-$domains_table->prepare_items();
-
-?>
-<div class="wrap">
-
-  <h1><?php _e('Domains', 'seravo'); ?> (beta)</h1>
-
-  <p><?php _e('Domains routed to this WordPress site are listed below.', 'seravo'); ?></p>
-
-  <!-- Forms are NOT created automatically, so you need to wrap
-    the table in one to use features like bulk actions -->
-  <form id="domains-filter" method="get">
-    <!-- For plugins, we also need to ensure that the form posts back to our current page -->
-    <input type="hidden" name="page" value="<?php echo $_REQUEST['page']; ?>" />
-    <!-- Now we can render the completed list table -->
-    <?php $domains_table->display(); ?>
-  </form>
-
-</div>
+function display_domains() {
+  // Create an instance of our package class
+  $domains_table = new Seravo_Domains_List_Table();
+  // Fetch, prepare, sort, and filter our data...
+  $domains_table->prepare_items();
+  $domains_table->display();
+}

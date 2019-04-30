@@ -18,6 +18,14 @@ if ( ! class_exists('Domains') ) {
     public static function load() {
       add_action( 'admin_menu', array( __CLASS__, 'register_domains_page' ) );
       add_action( 'admin_post_change_zone_file', array( 'Seravo\Domains', 'seravo_admin_change_zone_file' ), 20 );
+    
+      seravo_add_postbox(
+        'domains',
+        __('Domains', 'seravo') . ' (beta)',
+        array( __CLASS__, 'seravo_domains_postbox'),
+        'tools_page_domains_page',
+        'normal'
+      );
     }
 
     public static function register_scripts( $page ) {
@@ -28,11 +36,24 @@ if ( ! class_exists('Domains') ) {
     }
 
     public static function register_domains_page() {
-      add_submenu_page( 'tools.php', __('Domains', 'seravo'), __('Domains', 'seravo'), 'manage_options', 'domains_page', array( __CLASS__, 'load_domains_page' ) );
+      add_submenu_page(
+        'tools.php',
+        __('Domains', 'seravo'),
+        __('Domains', 'seravo'),
+        'manage_options',
+        'domains_page',
+        'Seravo\seravo_postboxes_page'
+      );
     }
 
-    public static function load_domains_page() {
-      require_once dirname( __FILE__ ) . '/../lib/domains-page.php';
+    public static function seravo_domains_postbox() {
+      ?>
+      <p><?php _e('Domains routed to this WordPress site are listed below.', 'seravo'); ?></p>
+      <form id="domains-filter" method="get">
+        <input type="hidden" name="page" value="<?php echo $_REQUEST['page']; ?>" />
+        <?php display_domains(); ?>
+      </form>
+      <?php
     }
 
     public static function seravo_admin_change_zone_file() {
