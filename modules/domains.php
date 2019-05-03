@@ -18,7 +18,7 @@ if ( ! class_exists('Domains') ) {
     public static function load() {
       add_action( 'admin_menu', array( __CLASS__, 'register_domains_page' ) );
       add_action( 'admin_post_change_zone_file', array( 'Seravo\Domains', 'seravo_admin_change_zone_file' ), 20 );
-    
+
       seravo_add_postbox(
         'domains',
         __('Domains', 'seravo') . ' (beta)',
@@ -47,6 +47,7 @@ if ( ! class_exists('Domains') ) {
     }
 
     public static function seravo_domains_postbox() {
+      require_once dirname( __FILE__ ) . '/../lib/domains-page.php';
       ?>
       <p><?php _e('Domains routed to this WordPress site are listed below.', 'seravo'); ?></p>
       <form id="domains-filter" method="get">
